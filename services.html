@@ -450,6 +450,25 @@
             color: #000;
         }
 
+        /* Message de remerciement */
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .thank-you-message h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .thank-you-message p {
+            margin-bottom: 15px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hamburger {
@@ -575,6 +594,15 @@
     <!-- Services Section -->
     <section class="services">
         <div class="container">
+            <!-- Message de remerciement -->
+            <div class="thank-you-message" id="thank-you-message">
+                <h2>Merci pour votre commande !</h2>
+                <p>Votre commande a été reçue avec succès.</p>
+                <p>Nous traiterons votre demande dans les plus brefs délais et vous contacterons sous peu.</p>
+                <p>L'équipe EDS</p>
+                <button class="btn" onclick="hideThankYouMessage()">Retour aux services</button>
+            </div>
+
             <!-- Service Instagram -->
             <div class="service-detail" id="instagram">
                 <h2>Followers Instagram</h2>
@@ -911,18 +939,17 @@
             
             if (websiteForm) {
                 websiteForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Ici, vous ajouteriez le code pour envoyer le formulaire
-                    // Pour l'instant, on affiche juste la modal
-                    confirmationModal.style.display = 'flex';
+                    // Laisser Netlify gérer la soumission
+                    // On affichera le message de remerciement après la soumission
+                    setTimeout(function() {
+                        showThankYouMessage();
+                    }, 1000);
                 });
             }
             
             if (modalOk) {
                 modalOk.addEventListener('click', function() {
                     confirmationModal.style.display = 'none';
-                    window.location.href = 'index.html';
                 });
             }
             
@@ -957,8 +984,12 @@
                 }
             });
             
-            // Validation du formulaire de paiement
+            // Gestion de la soumission du formulaire de paiement
             paymentForm.addEventListener('submit', function(e) {
+                // Empêcher la soumission par défaut
+                e.preventDefault();
+                
+                // Valider le formulaire
                 let valid = true;
                 const requiredFields = this.querySelectorAll('[required]');
                 
@@ -972,11 +1003,58 @@
                 });
                 
                 if (!valid) {
-                    e.preventDefault();
                     alert('Veuillez remplir tous les champs obligatoires.');
+                    return;
                 }
+                
+                // Créer un FormData object
+                const formData = new FormData(this);
+                
+                // Envoyer le formulaire via fetch
+                fetch("/", {
+                    method: "POST",
+                    body: formData,
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Afficher le message de remerciement
+                        showThankYouMessage();
+                        // Fermer le modal
+                        paymentModal.style.display = 'none';
+                        // Réinitialiser le formulaire
+                        this.reset();
+                    } else {
+                        alert("Une erreur s'est produite. Veuillez réessayer.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Une erreur s'est produite. Veuillez réessayer.");
+                });
             });
         });
+
+        // Fonction pour afficher le message de remerciement
+        function showThankYouMessage() {
+            document.getElementById('thank-you-message').style.display = 'block';
+            // Masquer tous les services
+            document.querySelectorAll('.service-detail').forEach(service => {
+                service.style.display = 'none';
+            });
+            // Scroll to the thank you message
+            document.getElementById('thank-you-message').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Fonction pour masquer le message de remerciement
+        function hideThankYouMessage() {
+            document.getElementById('thank-you-message').style.display = 'none';
+            // Afficher à nouveau tous les services
+            document.querySelectorAll('.service-detail').forEach(service => {
+                service.style.display = 'block';
+            });
+            // Scroll to the top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
-</html>  
+    </html>
