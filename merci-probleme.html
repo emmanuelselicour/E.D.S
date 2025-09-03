@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci - EDS</title>
+    <link rel="icon" href="https://files.catbox.moe/ioqzaq.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://files.catbox.moe/ioqzaq.jpg" alt="EDS Logo">
+            </a>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+                <span class="hamburger"></span>
+                <span class="sr-only">Menu</span>
+            </button>
+            <nav id="main-menu" role="menu" aria-hidden="true">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="problem.html">Signaler un problème</a></li>
+                    <li><a href="services.html">Nos services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="thank-you-message">
+                <h1>Merci pour votre signalement</h1>
+                <div class="checkmark">✓</div>
+                <p>Nous avons bien reçu votre signalement et allons traiter le problème dans les plus brefs délais.</p>
+                <p>Notre équipe vous contactera si nécessaire à l'adresse email que vous avez fournie.</p>
+                <div class="actions">
+                    <a href="index.html" class="btn">Retour à l'accueil</a>
+                    <a href="services.html" class="btn secondary">Voir nos services</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EDS Services</h3>
+                    <p>Votre partenaire numérique de confiance</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="facts.html">FAQ</a></li>
+                        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: eds.help.contact@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> EDS Services. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mise à jour de l'année dans le footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
