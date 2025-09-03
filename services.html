@@ -119,7 +119,8 @@
             <button class="modal-close" aria-label="Fermer">×</button>
             <h2>Commander un service</h2>
             
-            <form name="order-form" method="POST" data-netlify="true" enctype="multipart/form-data">
+            <!-- Formulaire avec action spécifique pour Netlify -->
+            <form name="order-form" method="POST" netlify enctype="multipart/form-data" action="/merci.html">
                 <input type="hidden" name="form-name" value="order-form" />
                 
                 <div class="form-group">
@@ -158,7 +159,7 @@
                 
                 <div class="form-group">
                     <label for="screenshot">Preuve de paiement (screenshot):</label>
-                    <input type="file" id="screenshot" name="screenshot" accept="image/*">
+                    <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
                 </div>
                 
                 <div class="form-group">
@@ -211,6 +212,6 @@
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
