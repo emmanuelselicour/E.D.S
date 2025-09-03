@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signaler un problème - EDS</title>
+    <link rel="icon" href="https://files.catbox.moe/ioqzaq.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://files.catbox.moe/ioqzaq.jpg" alt="EDS Logo">
+            </a>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+                <span class="hamburger"></span>
+                <span class="sr-only">Menu</span>
+            </button>
+            <nav id="main-menu" role="menu" aria-hidden="true">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="problem.html">Signaler un problème</a></li>
+                    <li><a href="services.html">Nos services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Signaler un problème</h1>
+            <p>Utilisez ce formulaire pour nous signaler tout problème rencontré avec nos services</p>
+            
+            <form name="problem-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="problem-form" />
+                <p class="hidden">
+                    <label>Ne remplissez pas ce champ si vous êtes humain: <input name="bot-field" /></label>
+                </p>
+                
+                <div class="form-group">
+                    <label for="nom">Nom:</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prenom">Prénom:</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description du problème:</label>
+                    <textarea id="description" name="description" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Signaler le problème</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EDS Services</h3>
+                    <p>Votre partenaire numérique de confiance</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="facts.html">FAQ</a></li>
+                        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: contact@eds-services.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> EDS Services. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
