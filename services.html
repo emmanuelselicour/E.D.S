@@ -3,214 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Services - EDS</title>
-    <link rel="icon" href="https://files.catbox.moe/1wac18.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="styles.css">
+    <title>Commander - EDS Services</title>
+    <link rel="icon" href="https://files.catbox.moe/ioqzaq.jpg" type="image/jpeg">
+    <style>
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0f1724;
+            --secondary-color: #20B2AA;
+            --accent-color: #3b82f6;
+            --light-color: #f8fafc;
+            --dark-color: #111;
+            --gray-color: #64748b;
+            --border-radius: 12px;
+            --transition: all 0.2s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: white;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: 3px solid rgba(59, 130, 246, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .notice {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #e2e8f0;
+        }
+
+        .payment-method img {
+            height: 30px;
+            width: auto;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .upload-status {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .alternative-upload {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f0f4f8;
+            border-radius: var(--border-radius);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="https://files.catbox.moe/ioqzaq.jpg" alt="EDS Logo">
-            </a>
-            <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
-                <span class="hamburger"></span>
-                <span class="sr-only">Menu</span>
-            </button>
-            <nav id="main-menu" role="menu" aria-hidden="true">
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="apropos.html">À propos</a></li>
-                    <li><a href="problem.html">Signaler un problème</a></li>
-                    <li><a href="services.html">Nos services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <h1>Nos Services</h1>
-            <p>Découvrez notre gamme de services numériques de qualité</p>
+    <div class="container">
+        <h1>Commander un service</h1>
+        
+        <form id="order-form" name="order-form" method="POST" data-netlify="true" enctype="multipart/form-data">
+            <input type="hidden" name="form-name" value="order-form" />
             
-            <div class="services-grid">
-                <!-- Service Instagram -->
-                <div class="service-card">
-                    <img src="https://files.catbox.moe/vayd1b.jpg" alt="Instagram Followers" class="service-image">
-                    <div class="service-content">
-                        <h3>Instagram Followers</h3>
-                        <p>Augmentez votre présence sur Instagram avec des followers de qualité.</p>
-                        <span class="service-price">1000 followers = 1500 gourdes (1,5 gourde/follower)</span>
-                        
-                        <div class="calculator ig-calculator">
-                            <input type="number" min="1" placeholder="Quantité de followers" value="1000">
-                            <div class="result ig-result">Prix: 1500 gourdes</div>
-                        </div>
-                        
-                        <button class="btn" onclick="openOrderModal('Instagram Followers', 1000)">Commander</button>
-                    </div>
+            <div class="form-group">
+                <label for="service">Service:</label>
+                <input type="text" id="service" name="service" value="Instagram Followers" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="quantite">Quantité:</label>
+                <input type="number" id="quantite" name="quantite" min="1" value="1000" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="prenom">Prénom:</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telephone">Téléphone:</label>
+                <input type="tel" id="telephone" name="telephone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="paiement">Méthode de paiement:</label>
+                <select id="paiement" name="paiement" required>
+                    <option value="">Choisissez...</option>
+                    <option value="moncash">MonCash</option>
+                    <option value="natcash">NatCash</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="screenshot">Preuve de paiement (screenshot):</label>
+                <input type="file" id="screenshot" name="screenshot" accept="image/*">
+                <div id="upload-status" class="upload-status"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message (optionnel):</label>
+                <textarea id="message" name="message" rows="3"></textarea>
+            </div>
+            
+            <div class="notice">
+                <strong>IMPORTANT:</strong> Après le transfert, récupérez un screenshot du message de confirmation et téléversez-le ici comme preuve. Sans preuve la commande ne sera pas traitée.
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <img src="https://files.catbox.moe/788ew1.jpg" alt="MonCash">
+                    <span>+509-32311840</span>
                 </div>
-                
-                <!-- Service TikTok -->
-                <div class="service-card">
-                    <img src="https://files.catbox.moe/38mz1h.jpg" alt="TikTok Followers" class="service-image">
-                    <div class="service-content">
-                        <h3>TikTok Followers</h3>
-                        <p>Développez votre audience TikTok avec des followers authentiques.</p>
-                        <span class="service-price">1000 followers = 2100 gourdes (2,1 gourdes/follower)</span>
-                        
-                        <div class="calculator tt-calculator">
-                            <input type="number" min="1" placeholder="Quantité de followers" value="1000">
-                            <div class="result tt-result">Prix: 2100 gourdes</div>
-                        </div>
-                        
-                        <button class="btn" onclick="openOrderModal('TikTok Followers', 1000)">Commander</button>
-                    </div>
-                </div>
-                
-                <!-- Service PayPal -->
-                <div class="service-card">
-                    <img src="https://files.catbox.moe/bj831t.jpg" alt="Création compte PayPal" class="service-image">
-                    <div class="service-content">
-                        <h3>Création compte PayPal</h3>
-                        <p>Obtenez un compte PayPal vérifié et fonctionnel pour vos transactions internationales.</p>
-                        <span class="service-price">Prix fixe: 1750 gourdes</span>
-                        
-                        <button class="btn" onclick="openOrderModal('Création compte PayPal', 1)">Commander</button>
-                    </div>
-                </div>
-                
-                <!-- Service Free Fire -->
-                <div class="service-card">
-                    <img src="https://files.catbox.moe/xn3953.jpg" alt="Diamants Free Fire" class="service-image">
-                    <div class="service-content">
-                        <h3>Diamants Free Fire</h3>
-                        <p>Rechargez votre compte Free Fire avec des diamants à prix compétitifs.</p>
-                        <span class="service-price">100 diamants = 190 gourdes (1,9 gourde/diamant)</span>
-                        
-                        <div class="calculator ff-calculator">
-                            <input type="number" min="1" placeholder="Quantité de diamants" value="100">
-                            <div class="result ff-result">Prix: 190 gourdes</div>
-                        </div>
-                        
-                        <button class="btn" onclick="openOrderModal('Diamants Free Fire', 100)">Commander</button>
-                    </div>
-                </div>
-                
-                <!-- Service Création site web -->
-                <div class="service-card">
-                    <img src="https://files.catbox.moe/u8klzc.jpg" alt="Création site web" class="service-image">
-                    <div class="service-content">
-                        <h3>Création site web</h3>
-                        <p>Nous créons des sites web professionnels adaptés à vos besoins, avec design responsive et référencement de base.</p>
-                        <p>Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé.</p>
-                        
-                        <a href="contact.html" class="btn">Laisser un message pour en parler</a>
-                    </div>
+                <div class="payment-method">
+                    <img src="https://files.catbox.moe/v812y5.jpg" alt="NatCash">
+                    <span>+509-43895284</span>
                 </div>
             </div>
-        </div>
-    </main>
-
-    <!-- Modal de commande -->
-    <div class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Fermer">×</button>
-            <h2>Commander un service</h2>
             
-            <form name="order-form" method="POST" data-netlify="true" enctype="multipart/form-data">
-                <input type="hidden" name="form-name" value="order-form" />
-                
-                <div class="form-group">
-                    <label for="service">Service:</label>
-                    <input type="text" id="service" name="service" readonly>
-                </div>
-                
-                <div class="form-group">
-                    <label for="quantite">Quantité:</label>
-                    <input type="number" id="quantite" name="quantite" min="1" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="nom">Nom:</label>
-                    <input type="text" id="nom" name="nom" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="prenom">Prénom:</label>
-                    <input type="text" id="prenom" name="prenom" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="telephone">Téléphone:</label>
-                    <input type="tel" id="telephone" name="telephone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="paiement">Méthode de paiement:</label>
-                    <select id="paiement" name="paiement" required>
-                        <option value="">Choisissez...</option>
-                        <option value="moncash">MonCash</option>
-                        <option value="natcash">NatCash</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="screenshot">Preuve de paiement (screenshot):</label>
-                    <input type="file" id="screenshot" name="screenshot" accept="image/*">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message (optionnel):</label>
-                    <textarea id="message" name="message" rows="3"></textarea>
-                </div>
-                
-                <div class="notice">
-                    <strong>IMPORTANT:</strong> Après le transfert, récupérez un screenshot du message de confirmation et téléversez-le ici comme preuve. Sans preuve la commande ne sera pas traitée.
-                </div>
-                
-                <div class="payment-methods">
-                    <div class="payment-method">
-                        <img src="https://files.catbox.moe/788ew1.jpg" alt="MonCash">
-                        <span>+509-32311840</span>
-                    </div>
-                    <div class="payment-method">
-                        <img src="https://files.catbox.moe/v812y5.jpg" alt="NatCash">
-                        <span>+509-43895284</span>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn">Envoyer la commande</button>
-            </form>
+            <button type="submit" class="btn">Envoyer la commande</button>
+        </form>
+
+        <div class="alternative-upload">
+            <h3>Alternative si l'upload ne fonctionne pas</h3>
+            <p>Si vous rencontrez des problèmes pour uploader votre preuve de paiement, vous pouvez :</p>
+            <ol>
+                <li>Envoyer le screenshot par WhatsApp au <strong>+509-32311840</strong></li>
+                <li>Ou l'envoyer par email à <strong>eds.help.contact@gmail.com</strong></li>
+            </ol>
+            <p>N'oubliez pas d'indiquer votre nom et le service commandé dans votre message.</p>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>EDS Services</h3>
-                    <p>Votre partenaire numérique de confiance</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Liens rapides</h3>
-                    <ul>
-                        <li><a href="facts.html">FAQ</a></li>
-                        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>Email: contact@eds-services.com</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> EDS Services. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('order-form');
+            const fileInput = document.getElementById('screenshot');
+            const uploadStatus = document.getElementById('upload-status');
+            
+            // Fonction pour uploader vers Cloudinary
+            async function uploadToCloudinary(file) {
+                // Remplacez ces valeurs par vos propres credentials Cloudinary
+                const cloudName = 'votre_cloud_name';
+                const uploadPreset = 'votre_upload_preset';
+                
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('upload_preset', uploadPreset);
+                
+                try {
+                    const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Erreur lors de l\'upload');
+                    }
+                    
+                    const data = await response.json();
+                    return data.secure_url;
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    throw error;
+                }
+            }
+            
+            // Gestion de la soumission du formulaire
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Vérification des champs requis
+                const requiredFields = form.querySelectorAll('[required]');
+                let valid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        valid = false;
+                        field.style.borderColor = 'red';
+                    } else {
+                        field.style.borderColor = '';
+                    }
+                });
+                
+                if (!valid) {
+                    alert('Veuillez remplir tous les champs obligatoires.');
+                    return;
+                }
+                
+                // Upload du fichier si sélectionné
+                let screenshotUrl = '';
+                
+                if (fileInput.files.length > 0) {
+                    uploadStatus.textContent = 'Upload en cours...';
+                    uploadStatus.className = 'upload-status';
+                    
+                    try {
+                        screenshotUrl = await uploadToCloudinary(fileInput.files[0]);
+                        uploadStatus.textContent = 'Upload réussi!';
+                        uploadStatus.className = 'upload-status success';
+                        
+                        // Ajouter l'URL comme champ caché
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'screenshot_url';
+                        hiddenInput.value = screenshotUrl;
+                        form.appendChild(hiddenInput);
+                    } catch (error) {
+                        uploadStatus.textContent = 'Erreur lors de l\'upload. Veuillez utiliser une méthode alternative.';
+                        uploadStatus.className = 'upload-status error';
+                        
+                        // On peut quand même soumettre le formulaire sans l'image
+                        // mais on informe l'utilisateur qu'il doit envoyer la preuve par un autre moyen
+                        alert('L\'upload de l\'image a échoué. Veuillez envoyer votre preuve de paiement par WhatsApp ou email.');
+                    }
+                }
+                
+                // Soumission du formulaire Netlify
+                setTimeout(() => {
+                    form.submit();
+                }, 1000);
+            });
+            
+            // Validation de la taille du fichier
+            fileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file && file.size > 8 * 1024 * 1024) {
+                    alert('Le fichier ne doit pas dépasser 8MB. Veuillez choisir un fichier plus petit.');
+                    this.value = '';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
