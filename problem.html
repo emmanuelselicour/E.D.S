@@ -34,9 +34,13 @@
             <h1>Signaler un problème</h1>
             <p>Utilisez ce formulaire pour nous signaler tout problème rencontré avec nos services</p>
             
-           <form name="problem-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci-probleme.html">
-
-   
+            <!-- Modification ici: ajout de l'attribut action pour rediriger vers la page de remerciement -->
+            <form name="problem-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci-probleme.html">
+                <input type="hidden" name="form-name" value="problem-form" />
+                <p class="hidden">
+                    <label>Ne remplissez pas ce champ si vous êtes humain: <input name="bot-field" /></label>
+                </p>
+                
                 <div class="form-group">
                     <label for="nom">Nom:</label>
                     <input type="text" id="nom" name="nom" required>
@@ -89,6 +93,4 @@
 
     <script src="scripts.js"></script>
 </body>
-
 </html>
-
