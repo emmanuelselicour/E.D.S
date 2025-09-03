@@ -151,18 +151,15 @@
         main {
             padding: 2rem 0;
             flex: 1;
-            display: flex;
-            align-items: center;
         }
 
         .thank-you-container {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 2rem auto;
             padding: 2rem;
             background-color: #f8fafc;
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .thank-you-icon {
@@ -184,11 +181,11 @@
         }
 
         .next-steps {
+            margin: 2rem 0;
+            text-align: left;
             background-color: white;
             padding: 1.5rem;
             border-radius: var(--border-radius);
-            margin-top: 2rem;
-            text-align: left;
         }
 
         .next-steps h2 {
@@ -204,6 +201,38 @@
         .next-steps li {
             margin-bottom: 0.5rem;
             color: var(--gray-color);
+        }
+
+        .contact-info-summary {
+            margin-top: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .contact-info-summary h2 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            background-color: var(--secondary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
         }
 
         .btn {
@@ -328,16 +357,40 @@
             <div class="thank-you-container">
                 <div class="thank-you-icon">✅</div>
                 <h1>Merci pour votre message !</h1>
-                <p>Nous avons bien reçu votre demande et nous vous en remercions. Notre équipe va la traiter dans les plus brefs délais et vous répondra très prochainement.</p>
-                <p>Nous nous engageons à vous répondre dans un délai maximum de 24 heures pendant nos heures d'ouverture.</p>
+                <p>Nous avons bien reçu votre demande et nous vous en remercions. Notre équipe va traiter votre message dans les plus brefs délais et vous répondra très prochainement.</p>
                 
                 <div class="next-steps">
-                    <h2>Prochaines étapes :</h2>
+                    <h2>À quoi s'attendre ensuite ?</h2>
                     <ul>
-                        <li>Vous recevrez un email de confirmation dans quelques minutes</li>
-                        <li>Notre équipe analysera votre demande</li>
-                        <li>Nous vous contacterons selon la méthode que vous avez privilégiée</li>
+                        <li>Vous recevrez un email de confirmation dans les prochaines minutes</li>
+                        <li>Notre équipe vous répondra sous 24 heures (jours ouvrables)</li>
+                        <li>Pour les demandes urgentes, nous vous recommandons de nous contacter par téléphone</li>
                     </ul>
+                </div>
+                
+                <div class="contact-info-summary">
+                    <h2>Contactez-nous directement</h2>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <p><strong>Téléphone:</strong> +1 510-281-7365</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-details">
+                            <p><strong>WhatsApp:</strong> +1 510-281-7365</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <p><strong>Email:</strong> eds.help.contact@gmail.com</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <a href="index.html" class="btn">Retour à l'accueil</a>
